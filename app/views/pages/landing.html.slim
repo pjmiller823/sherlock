@@ -15,9 +15,21 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    img src="/images/evelyn-paris-95853.jpg" width="100%" height="700"/
+    img.landing src="/images/evelyn-paris-95853.jpg" width="100%" height="700"/
     
     .container
-      .jumbotron.text-center
+      .jumbotron.text-center.my-jumbotron
         h1 Welcome to SHERLOCK!
         p Let us hunt down the perfect home for you
+        
+    img.banner src="/images/simon-matzinger-223988.jpg" width="100%" height="300"/
+    
+    .jumbotron.text-center.col-md-8-offset-4.offers
+      h2 What we offer:
+      ul
+        li Customizable Searches
+        li Thousands of listing in hundreds of zip codes
+        li etc 
+        li etc 
+        li etc
+      

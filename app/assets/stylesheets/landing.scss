@@ -1,3 +1,31 @@
-.img {
-  padding-top: 0;
+body {
+  background-color: #f2f1ef;
+}
+
+.landing {
+  margin: 0;
+  border: solid .4em black;
+}
+
+.my-jumbotron {
+  background-color: inherit;
+  margin: 0;
+}
+
+h2 {
+  background-color: #f2f1ef;
+  margin: 0;
+  padding: 0;
+}
+
+.offers {
+  background-color: #f2f1ef;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid .4em black;
+}
+
+ul {
+  list-style: none;
 }
