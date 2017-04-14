@@ -1,0 +1,44 @@
+.page-header
+  = link_to new_home_path, class: 'btn btn-primary' do
+    span.glyphicon.glyphicon-plus
+    | New Home
+  h1 Listing homes
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th Address
+        th City
+        th State
+        th Zip
+        th Number of bedrooms
+        th Number of baths
+        th Square footage
+        th Price
+        th Description
+        th Image data
+        th Year built
+        th Created by
+        th colspan=3
+    tbody.table-body
+      - @homes.each do | home |
+        tr
+          td= home.address
+          td= home.city
+          td= home.state
+          td= home.zip
+          td= home.number_of_bedrooms
+          td= home.number_of_baths
+          td= home.square_footage
+          td= home.price
+          td= home.description
+          td= home.image_data
+          td= home.year_built
+          td= home.created_by_id
+          td= link_to home do
+            span.glyphicon.glyphicon-ok
+          td= link_to edit_home_path(home)
+            span.glyphicon.glyphicon-pencil
+          td= link_to home, method: :delete, data: { confirm: 'Are you sure?' }
+            span.glyphicon.glyphicon-remove

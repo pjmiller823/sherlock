@@ -1,0 +1,33 @@
+.page-header
+  = link_to homes_path, class: 'btn btn-default' do 
+    span.glyphicon.glyphicon-list-alt
+    |  Back 
+  = link_to edit_home_path(@home), class: 'btn btn-primary' do 
+    span.glyphicon.glyphicon-pencil
+    |  Edit 
+  h1 Show home
+dl.dl-horizontal
+  dt Address:
+  dd = @home.address
+  dt City:
+  dd = @home.city
+  dt State:
+  dd = @home.state
+  dt Zip:
+  dd = @home.zip
+  dt Number of bedrooms:
+  dd = @home.number_of_bedrooms
+  dt Number of baths:
+  dd = @home.number_of_baths
+  dt Square footage:
+  dd = @home.square_footage
+  dt Price:
+  dd = @home.price
+  dt Description:
+  dd = @home.description
+  dt Image data:
+  dd = @home.image_data
+  dt Year built:
+  dd = @home.year_built
+  dt Created by:
+  dd = @home.created_by_id
