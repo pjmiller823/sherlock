@@ -1,29 +1,46 @@
-body {
-  background-color: #f2f1ef;
+
+.landing-picture {
+  margin-top: 0;
+  padding-top: 0;
 }
 
-.landing {
-  margin: 0;
-  border: solid .4em black;
+.landing-body {
+  // Put all rules that only apply on the landing page here
+  padding-top: 0;
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .home-page-button-row {
+    a {
+      width: 100%;
+    }
+
+    h2 {
+      background-color: #f4f3f2;
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 
 .my-jumbotron {
   background-color: inherit;
   margin: 0;
+  padding-top: 3px;
 }
 
-h2 {
-  background-color: #f2f1ef;
-  margin: 0;
-  padding: 0;
+.mine {
+  margin-left: 1em;
 }
 
 .offers {
-  background-color: #f2f1ef;
+  background-color: inherit;
   list-style: none;
   margin: 0;
   padding: 0;
-  border: solid .4em black;
 }
 
 ul {

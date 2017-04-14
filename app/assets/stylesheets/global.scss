@@ -1,0 +1,20 @@
+// These styles are for every page regardless
+body {
+  background-color: #caccce;
+  font-family: Cinzel;
+  color: #444341;
+}
+
+footer {
+  background-color: #60824a;
+  border-top: solid .3em #444341;
+  padding-bottom: 4px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;  
+}
+
+footer.p {
+  padding-top: 1em;
+  padding: 2em;
+}
