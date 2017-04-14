@@ -15,21 +15,35 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
+  
+  
+    nav.navbar.navbar-inverse.navbar-fixed-top role="navigation" 
       .container
         .navbar-header
-          button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
-            span.sr-only
-              | Toggle navigation
+          button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button" 
+            span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
           = link_to "#", class: "navbar-brand" do
-            | Sherlock
+            | Hacker
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li.active
-              = link_to "Home", "#"
+            li= link_to "Home"
+            li= link_to "New"
+          ul.nav.navbar-nav.navbar-right
+            / - if logged_in?
+            li
+              p.navbar-text
+                / | Logged in as: #{current_user.name}
+            li
+              = link_to "Logout"
+          / - else
+            li
+              = link_to 'Login'
+            li
+              = link_to 'Signup'
+
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do
@@ -40,5 +54,5 @@ html
               | Close
           = msg
       = yield
-      footer.text-center
-        p Copyright &copy; Patrick J Miller. Built with &hearts; at The Iron Yard
+    footer.text-center
+      p Copyright &copy; Patrick J Miller. Built with &hearts; at The Iron Yard

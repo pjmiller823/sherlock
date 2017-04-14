@@ -1,8 +1,21 @@
 // These styles are for every page regardless
 body {
-  background-color: #caccce;
+  background-color: #f2f1ef;
   font-family: Cinzel;
   color: #444341;
+}
+.navbar {
+  background-color: #60824a;
+  border-bottom: solid .3em #444341;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+ul {
+  list-style: none;
 }
 
 footer {
@@ -10,8 +23,6 @@ footer {
   border-top: solid .3em #444341;
   padding-bottom: 4px;
   margin-bottom: 0;
-  display: flex;
-  align-items: center;  
 }
 
 footer.p {
