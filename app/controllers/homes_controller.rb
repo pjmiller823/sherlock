@@ -1,4 +1,5 @@
 class HomesController < ApplicationController
+  before_action :authenticate!, except: [:index]
   # GET /homes
   def index
     @homes = Home.all
@@ -22,7 +23,7 @@ class HomesController < ApplicationController
   # POST /homes
   def create
     @home = Home.new(home_params)
-
+    @home.created_by = current_user
     if @home.save
       redirect_to @home, notice: 'Home was successfully created.'
     else
@@ -51,6 +52,6 @@ class HomesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def home_params
-    params.require(:home).permit(:address, :city, :state, :zip, :number_of_bedrooms, :number_of_baths, :square_footage, :price, :description, :image_data, :year_built, :created_by_id)
+    params.require(:home).permit(:address, :city, :state, :zip, :number_of_bedrooms, :number_of_baths, :square_footage, :price, :description, :image_data, :year_built)
   end
 end
