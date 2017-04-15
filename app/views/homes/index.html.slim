@@ -1,15 +1,14 @@
 .page-header.text-center
   = link_to new_home_path, class: 'btn btn-success' do
-    span.glyphicon.glyphicon-plus
     | New Home
-  h1 Our Homes
+  h1 Please, make a selection from one of our homes.
 
 .row.index-search
   .col-md-10
     input type="text" class="form-control" placeholder="Search"
   button type="submit" class="btn btn-success"Elementary Search
 .row
-  - 6.times 
+  - @homes.each do |home| 
     .col-md-6.index-column
       .media
         .media-left
@@ -18,15 +17,15 @@
         .media-body
           h4.media-heading The Home
           ul
-            li Address
-            li City
-            li State
-            li zip
-            li Number of Bedrooms:
-            li Number of Baths:
-            li Square Footage:
-            li Price:
-            li Year built
-          | Description
-        span = link_to "edit"
-        span = link_to " delete", method: :delete, data: { confirm: 'Are you sure?' }
+            li = home.address
+            li = home.city
+            li = home.state
+            li = home.zip
+            li Number of Bedrooms: #{ home.number_of_bedrooms}
+            li Number of Baths: #{ home.number_of_baths}
+            li Square Footage: #{ home.square_footage}
+            li Price: #{ home.price}
+            li Year built: #{ home.year_built}
+          = home.description
+        / = link_to "edit" edit_home_path
+        / = link_to " delete" , method: :delete, data: { confirm: 'Are you sure?' }
