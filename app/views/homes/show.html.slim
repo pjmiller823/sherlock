@@ -6,26 +6,24 @@
     span.glyphicon.glyphicon-pencil
     |  Edit 
   h1 Show home
-dl.dl-horizontal
-  dt Address:
-  dd = @home.address
-  dt City:
-  dd = @home.city
-  dt State:
-  dd = @home.state
-  dt Zip:
-  dd = @home.zip
-  dt Number of bedrooms:
-  dd = @home.number_of_bedrooms
-  dt Number of baths:
-  dd = @home.number_of_baths
-  dt Square footage:
-  dd = @home.square_footage
-  dt Price:
-  dd = @home.price
-  dt Description:
-  dd = @home.description
-  dt Image data:
-  dd = @home.year_built
-  / dt Created by:
-  / dd = @home.created_by.name
+  
+.jumbotron.show-jumbotron.text-center
+  h1 Looks like Sherlock has turned up something good!
+  h2 #{@home.address} in #{@home.city}, #{@home.state}, #{@home.zip}
+   
+.col-md-12.index-column
+    .media
+      .media-left.show-pic 
+        img src="..." width="400" height="500"  
+      
+      .media-body.show-details
+        / h4.media-heading Sherlock's found you #{@home.address}
+        / | in #{@home.city}, #{@home.state}, #{@home.zip}
+        ul
+          li Number of Bedrooms: #{ @home.number_of_bedrooms}
+          li Number of Baths: #{ @home.number_of_baths}
+          li Square Footage: #{ @home.square_footage}
+          li Price: #{ @home.price}
+          li Year built: #{ @home.year_built}
+          li Listed by: #{@home.created_by.name}
+        .span.description-span Description: #{@home.description}

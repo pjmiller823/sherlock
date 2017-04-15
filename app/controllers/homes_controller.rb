@@ -49,7 +49,7 @@ class HomesController < ApplicationController
   def destroy
     @home = Home.find(params[:id])
     @home.destroy
-    
+
     unless @home.can_user_destroy?(current_user)
       redirect_to homes_path, notice: "You can't destroy something you didn't create"
     end
