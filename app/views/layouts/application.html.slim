@@ -25,24 +25,22 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          = link_to "#", class: "navbar-brand" do
+          = link_to root_path, class: "navbar-brand" do
             | Hacker
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li= link_to "Home"
-            li= link_to "New"
+            li= link_to "Sherlock's Homes", root_path
+            li= link_to "New", new_home_path
           ul.nav.navbar-nav.navbar-right
             - if logged_in?
               li
                 p.navbar-text
                   | Logged in as: #{current_user.nickname}
               li
-                = link_to "Logout"
+                = link_to "Logout", logout_path
             - else
               li
                 = link_to 'Login with Github', auth_path(provider: 'github')
-              li
-                = link_to 'Signup'
 
     .container
       - flash.each do |name, msg|

@@ -15,4 +15,6 @@ class User < ApplicationRecord
 
     return user
   end
+
+  has_many :homes
 end

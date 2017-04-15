@@ -26,9 +26,9 @@ html
           .col-md-4
             = link_to "homes", homes_path, class: "btn btn-success btn-lg active"
           .col-md-4
-            = link_to "Sign Up", "/signup", class: "btn btn-success btn-lg active"
+            = link_to "Search", homes_path, class: "btn btn-success btn-lg active"
           .col-md-4
-            = link_to "Login", "/login", class: "btn btn-success btn-lg active"
+            = link_to "Login", auth_path(provider: 'github'), class: "btn btn-success btn-lg active"
         
     img.banner src="/images/alina-chupakhina-239200.jpg" width="100%" height="300"/
     
