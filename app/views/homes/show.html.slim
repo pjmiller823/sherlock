@@ -1,12 +1,3 @@
-.page-header
-  = link_to homes_path, class: 'btn btn-default' do 
-    span.glyphicon.glyphicon-list-alt
-    |  Back 
-  = link_to edit_home_path(@home), class: 'btn btn-primary' do 
-    span.glyphicon.glyphicon-pencil
-    |  Edit 
-  h1 Show home
-  
 .jumbotron.show-jumbotron.text-center
   h1 Looks like Sherlock has turned up something good!
   h2 #{@home.address} in #{@home.city}, #{@home.state}, #{@home.zip}
@@ -15,15 +6,41 @@
     .media
       .media-left.show-pic 
         img src="..." width="400" height="500"  
-      
+        - if @home.created_by == current_user
+          p = link_to "edit", edit_home_path
+          p = link_to " delete", method: :delete, data: { confirm: 'Are you sure?' }
+        
       .media-body.show-details
-        / h4.media-heading Sherlock's found you #{@home.address}
-        / | in #{@home.city}, #{@home.state}, #{@home.zip}
-        ul
-          li Number of Bedrooms: #{ @home.number_of_bedrooms}
-          li Number of Baths: #{ @home.number_of_baths}
-          li Square Footage: #{ @home.square_footage}
-          li Price: #{ @home.price}
-          li Year built: #{ @home.year_built}
-          li Listed by: #{@home.created_by.name}
-        .span.description-span Description: #{@home.description}
+        -if (Time.now - @home.created_at) < 2.days
+          ul.text-primary
+            li Number of Bedrooms: #{ @home.number_of_bedrooms}
+            li Number of Baths: #{ @home.number_of_baths}
+            li Square Footage: #{ @home.square_footage}
+            li Price: #{ @home.price}
+            li Year built: #{ @home.year_built}
+            li Listed by: #{@home.created_by.name}
+            li Created #{time_ago_in_words(@home.created_at)} ago
+          .span.description-span Description: #{@home.description}
+          
+        -elsif (Time.now - @home.created_at) > 2.days < 30.days
+          ul.
+            li Number of Bedrooms: #{ @home.number_of_bedrooms}
+            li Number of Baths: #{ @home.number_of_baths}
+            li Square Footage: #{ @home.square_footage}
+            li Price: #{ @home.price}
+            li Year built: #{ @home.year_built}
+            li Listed by: #{@home.created_by.name}
+            li Created #{time_ago_in_words(@home.created_at)} ago
+          .span.description-span Description: #{@home.description}
+          
+        -else
+          ul.text-danger
+            li Number of Bedrooms: #{ @home.number_of_bedrooms}
+            li Number of Baths: #{ @home.number_of_baths}
+            li Square Footage: #{ @home.square_footage}
+            li Price: #{ @home.price}
+            li Year built: #{ @home.year_built}
+            li Listed by: #{@home.created_by.name}
+            li Created #{time_ago_in_words(@home.created_at)} ago
+          .span.description-span Description: #{@home.description}
+          

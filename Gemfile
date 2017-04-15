@@ -6,6 +6,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# pagination
+gem 'kaminari'
+
+# imagemagick
+gem 'shrine'
+gem 'shrine-sql'
+gem 'roda'
+
 # So you can authenticate through third party
 gem 'omniauth'
 gem 'omniauth-github'

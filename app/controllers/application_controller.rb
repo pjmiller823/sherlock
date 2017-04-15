@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
       redirect_to auth_path(provider: 'github')
     end
   end
+
+  def how_long_ago(home)
+    time_ago_in_words(home.created_at)
+  end
+  helper_method :how_long_ago
 end
