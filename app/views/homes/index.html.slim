@@ -16,7 +16,7 @@
           img.media-object src="..." width="200" height="250"
 
         .media-body
-          h4.media-heading = link_to "The Home"
+          h4.media-heading = link_to "The Home", home
           ul
             li = home.address
             li = home.city
@@ -28,5 +28,5 @@
             li Price: #{ home.price}
             li Year built: #{ home.year_built}
           = home.description
-        / = link_to "edit" edit_home_path
-        / = link_to " delete" , method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to "edit", edit_home_path(home)
+        = link_to " delete", method: :delete, data: { confirm: 'Are you sure?' }

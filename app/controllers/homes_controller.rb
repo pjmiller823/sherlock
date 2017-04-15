@@ -18,6 +18,10 @@ class HomesController < ApplicationController
   # GET /homes/1/edit
   def edit
     @home = Home.find(params[:id])
+
+    unless @home.can_user_edit?(current_user)
+      redirect_to homes_path, notice: "you can't edit a home you didn't create"
+    end
   end
 
   # POST /homes
@@ -45,6 +49,10 @@ class HomesController < ApplicationController
   def destroy
     @home = Home.find(params[:id])
     @home.destroy
+    
+    unless @home.can_user_destroy?(current_user)
+      redirect_to homes_path, notice: "You can't destroy something you didn't create"
+    end
     redirect_to homes_url, notice: 'Home was successfully destroyed.'
   end
 
