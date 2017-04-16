@@ -2,9 +2,7 @@ class HomesController < ApplicationController
   before_action :authenticate!, except: [:index, :show]
   # GET /homes
   def index
-
     @page = params[:page].to_i
-    @starting_number = @page == 0 ? 0 : (@page - 1) * 20
 
     @homes = Home.all.order(created_at: :desc).page(@page).per(6)
   end

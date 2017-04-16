@@ -4,10 +4,13 @@
   h1 Please, make a selection from one of our homes.
   end
   
-.row.index-search
+.row.index-search 
   .col-md-10
-    input type="text" class="form-control" placeholder="Search"    
-  button type="submit" class="btn btn-success"Elementary Search
+    form.form-horizontal action="searched" method="get" 
+      .form-group
+        input.form-control name="search" placeholder="Search" type="search" 
+        button.btn.btn-success type="submit" Elementary Search
+  
 = paginate @homes
 .row
   - @homes.each do |home| 
