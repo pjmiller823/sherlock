@@ -8,15 +8,19 @@
   .col-md-10
     input type="text" class="form-control" placeholder="Search"    
   button type="submit" class="btn btn-success"Elementary Search
+= paginate @homes
 .row
   - @homes.each do |home| 
     .col-md-6.index-column
       .media
         .media-left
-          img.media-object src="..." width="200" height="250"
+          -if home.image_url(:small)
+            = image_tag(home.image_url(:small))
+          -else
+            = image_tag("stock-photo.jpeg", size: "200x200")
 
         .media-body
-          h4.media-heading = link_to "The Home", home
+          h4.media-heading = link_to "View The Home", home
           ul
             li = home.address
             li = home.city
@@ -28,5 +32,3 @@
             li Price: #{ home.price}
             li Year built: #{ home.year_built}
           = home.description
-        = link_to "edit", edit_home_path(home)
-        = link_to " delete", method: :delete, data: { confirm: 'Are you sure?' }

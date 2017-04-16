@@ -2,6 +2,9 @@
   background-color: #f2f1ef;
 }
 
+.show-pic p {
+  font-size: 150%
+}
 .show-details {
   padding-top: 3em;
 
@@ -14,5 +17,6 @@
 
 .description-span {
   font-weight: 600;
-  font-size: 150%
+  font-size: 150%;
+  font: #444341;
 }

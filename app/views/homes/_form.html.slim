@@ -50,6 +50,9 @@
     = f.label :year_built, class: "col-sm-2 control-label"
     .col-sm-6
       = f.number_field :year_built, class: "form-control"
+  |Upload a picture
+  = f.hidden_field :image, value: @home.image_data
+  = f.file_field :image
   .form-group
     .col-sm-offset-2.col-sm-6
       = f.submit class: "btn btn-success"

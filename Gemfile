@@ -13,6 +13,8 @@ gem 'kaminari'
 gem 'shrine'
 gem 'shrine-sql'
 gem 'roda'
+gem "image_processing"
+gem "mini_magick", ">= 4.3.5"
 
 # So you can authenticate through third party
 gem 'omniauth'

@@ -1,8 +1,12 @@
 class HomesController < ApplicationController
-  before_action :authenticate!, except: [:index]
+  before_action :authenticate!, except: [:index, :show]
   # GET /homes
   def index
-    @homes = Home.all
+
+    @page = params[:page].to_i
+    @starting_number = @page == 0 ? 0 : (@page - 1) * 20
+
+    @homes = Home.all.order(created_at: :desc).page(@page).per(6)
   end
 
   # GET /homes/1
@@ -60,6 +64,6 @@ class HomesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def home_params
-    params.require(:home).permit(:address, :city, :state, :zip, :number_of_bedrooms, :number_of_baths, :square_footage, :price, :description, :image_data, :year_built)
+    params.require(:home).permit(:address, :city, :state, :zip, :number_of_bedrooms, :number_of_baths, :square_footage, :price, :description, :image, :year_built)
   end
 end

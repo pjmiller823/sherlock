@@ -4,11 +4,14 @@
    
 .col-md-12.index-column
     .media
-      .media-left.show-pic 
-        img src="..." width="400" height="500"  
+      .media-left.show-pic
+        -if @home.image_url(:medium)
+          = image_tag(@home.image_url(:medium))
+        -else
+          = image_tag("stock-photo.jpeg", size: "400x500")
         - if @home.created_by == current_user
-          p = link_to "edit", edit_home_path
-          p = link_to " delete", method: :delete, data: { confirm: 'Are you sure?' }
+          p = link_to "Edit this entry", edit_home_path
+          p = link_to " Delete this entry", method: :delete, data: { confirm: 'Are you sure?' }
         
       .media-body.show-details
         -if (Time.now - @home.created_at) < 2.days
