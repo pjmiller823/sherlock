@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'pages/landing'
   get '/home'                       => 'homes#show'
-  get '/searched'                   => 'homes#searched'
+  get '/delete'                     => 'homes#delete'
   root 'pages#landing'
   get    '/auth/:provider'          => 'omniauth#auth',    as: :auth
   get    '/auth/:provider/callback' => 'session#create'

@@ -4,7 +4,11 @@ class HomesController < ApplicationController
   def index
     @page = params[:page].to_i
 
-    @homes = Home.all.order(created_at: :desc).page(@page).per(6)
+    if params[:searched]
+      @homes_searched =  Home.where("address like ? or city like ? or state like ? or zip = ?", "%#{params[:searched]}%", "%#{params[:searched]}%", "%#{params[:searched]}%", "#{params[:searched].to_i}")
+    else
+      @homes = Home.all.order(created_at: :desc).page(@page).per(6)
+    end
   end
 
   # GET /homes/1
