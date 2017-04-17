@@ -8,6 +8,7 @@ end
 
 # pagination
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 # imagemagick
 gem 'shrine'

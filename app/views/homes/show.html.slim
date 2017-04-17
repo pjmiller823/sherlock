@@ -8,7 +8,7 @@
         -if @home.image_url(:medium)
           = image_tag(@home.image_url(:medium))
         -else
-          = image_tag("stock-photo.jpeg", size: "400x500")
+          = image_tag("No_picture_available.png", size: "400x500")
         - if @home.created_by == current_user
           p = link_to "Edit this entry", edit_home_path
           p = link_to @home, method: :delete, data: { confirm: 'Are you sure?' } do

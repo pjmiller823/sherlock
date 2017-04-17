@@ -1,9 +1,20 @@
 
+.controller-homes{
+  .index-column {
+    margin-bottom: 2em;
+    max-height: 280px;
+  }
 
-.index-column {
-  margin-bottom: 2em;
-}
+  .index-search {
+    margin-bottom: 2em;
+  }
 
-.index-search {
-  margin-bottom: 2em;
+  .no-results {
+    background-color: inherit;
+    margin-bottom: 0;
+  }
+
+  .pagination {
+    font-size: 150%;
+  }
 }

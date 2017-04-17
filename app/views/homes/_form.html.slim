@@ -12,35 +12,35 @@
           li= msg
   .form-group
     = f.label :address, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-5
       = f.text_field :address, class: "form-control has-success"
   .form-group
     = f.label :city, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-5
       = f.text_field :city, class: "form-control"
   .form-group
     = f.label :state, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-5
       = f.text_field :state, class: "form-control"
   .form-group
     = f.label :zip, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-2
       = f.number_field :zip, class: "form-control"
   .form-group
     = f.label :number_of_bedrooms, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-2
       = f.number_field :number_of_bedrooms, class: "form-control"
   .form-group
     = f.label :number_of_baths, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-2
       = f.number_field :number_of_baths, class: "form-control"
   .form-group
     = f.label :square_footage, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-2
       = f.number_field :square_footage, class: "form-control"
   .form-group
     = f.label :price, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-2
       = f.number_field :price, class: "form-control"
   .form-group
     = f.label :description, class: "col-sm-2 control-label"
@@ -48,11 +48,13 @@
       = f.text_area :description, class: "form-control"
   .form-group
     = f.label :year_built, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-2
       = f.number_field :year_built, class: "form-control"
-  |Upload a picture
-  = f.hidden_field :image, value: @home.image_data
-  = f.file_field :image
+  .form-group
+    = f.label :Upload_a_picture, class: "col-sm-2 control-label"
+    .col-sm-2
+      = f.hidden_field :image, value: @home.image_data
+      = f.file_field :image
   .form-group
     .col-sm-offset-2.col-sm-6
       = f.submit class: "btn btn-success"

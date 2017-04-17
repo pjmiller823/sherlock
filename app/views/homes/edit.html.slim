@@ -1,10 +1,11 @@
 .page-header
-  = link_to homes_path, class: 'btn btn-default' do
-    span.glyphicon.glyphicon-list-alt
-    | Back
-  = link_to @home, class: 'btn btn-primary' do
-    span.glyphicon.glyphicon-info-sign
-    | Show
-  h1 Editing home
-
-= render 'form'
+  h1 Edit your home!
+  .col-md-12.index-column
+    .media
+      .media-left.edit-picture
+        -if @home.image_url(:medium)
+          = image_tag(@home.image_url(:medium))
+        -else
+          = image_tag("No_picture_available.png", size: "200x200")
+      .media-body
+        = render 'form'

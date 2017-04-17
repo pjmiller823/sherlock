@@ -2,13 +2,13 @@ class HomesController < ApplicationController
   before_action :authenticate!, except: [:index, :show]
   # GET /homes
   def index
-    @page = params[:page].to_i
-
-    if params[:searched]
-      @homes_searched =  Home.where("address like ? or city like ? or state like ? or zip = ?", "%#{params[:searched]}%", "%#{params[:searched]}%", "%#{params[:searched]}%", "#{params[:searched].to_i}")
+    @query = params[:query]
+    if @query
+      @homes = Home.where("address like :query or city like :query or state like :query or zip = :query_number", query: "%#{@query}%", query_number: @query.to_i)
     else
-      @homes = Home.all.order(created_at: :desc).page(@page).per(6)
+      @homes = Home.all.order(created_at: :desc)
     end
+    @homes = @homes.page(params[:page]).per(6)
   end
 
   # GET /homes/1

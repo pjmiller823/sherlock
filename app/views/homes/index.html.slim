@@ -1,64 +1,51 @@
-.page-header.text-center
-  = link_to new_home_path, class: 'btn btn-success' do
-    | New Home
-  h1 Please, make a selection from one of our homes.
-  end
-  
-.row.index-search 
-  .col-md-10
-    .form-group
-      = form_tag homes_path, method: "get" do
-        = label_tag(:q, "Elementary Search:")
-        = text_field_tag("searched", params[:searched])
-        =submit_tag("Search")
-      /   input.form-control name="search" placeholder="Search" type="search" 
-      /   button.btn.btn-success type="submit" Elementary Search
--if @homes  
-  = paginate @homes
+.controller-homes
+  .page-header.text-center
+    = link_to new_home_path, class: 'btn btn-success' do
+      | New Home
+    h1 Please, make a selection from one of our homes.
+    end
+    
+  .row.index-search 
+    .col-sm-12
+      = form_tag homes_path, method: "get", class: "form-horizontal form-home-search" do
+        .form-group
+          = label_tag(:query, "Elementary Search:", class: "col-sm-2 control-label")
+          .col-sm-8
+            = text_field_tag(:query, @query, class: "form-control")
+          .col-sm-2
+            = submit_tag("Search")
+          
+  = paginate @homes, class: "pagination text-center"
   .row
-    - @homes.each do |home| 
-      .col-md-6.index-column
-        .media
-          .media-left
-            -if home.image_url(:small)
-              = image_tag(home.image_url(:small))
-            -else
-              = image_tag("stock-photo.jpeg", size: "200x200")
+    - if @homes.empty?
+      .col-md-10
+        .jumbotron.no-results.text-center
+          
+          h3
+            | Sorry, Sherlock couldn't find any homes that matched: 
+            p
+              = @query
 
-          .media-body
-            h4.media-heading = link_to "View The Home", home
-            ul
-              li = home.address
-              li = home.city
-              li = home.state
-              li = home.zip
-              li Number of Bedrooms: #{ home.number_of_bedrooms}
-              li Number of Baths: #{ home.number_of_baths}
-              li Square Footage: #{ home.square_footage}
-              li Price: #{ home.price}
-              li Year built: #{ home.year_built}
-            .span Description: #{home.description}
--else
-  .row
-    - @homes_searched.each do |home| 
-      .col-md-6.index-column
-        .media
-          .media-left
-            -if home.image_url(:small)
-              = image_tag(home.image_url(:small))
-            -else
-              = image_tag("stock-photo.jpeg", size: "200x200")
+    - else
+      - @homes.each do |home| 
+        .col-md-6.index-column
+          .media
+            .media-left
+              -if home.image_url(:small)
+                = image_tag(home.image_url(:small))
+              -else
+                = image_tag("No_picture_available.png", size: "200x250")
 
-          .media-body
-            h4.media-heading = link_to "View The Home", home
-            ul
-              li = home.address
-              li = home.city
-              li = home.state
-              li = home.zip
-              li Number of Bedrooms: #{ home.number_of_bedrooms}
-              li Number of Baths: #{ home.number_of_baths}
-              li Square Footage: #{ home.square_footage}
-              li Price: #{ home.price}
-              li Year built: #{ home.year_built}
-            .span Description: #{home.description}
+            .media-body
+              h4.media-heading = link_to "View The Home", home
+              ul
+                li = home.address
+                li = home.city
+                li = home.state
+                li = home.zip
+                li Number of Bedrooms: #{ home.number_of_bedrooms}
+                li Number of Baths: #{ home.number_of_baths}
+                li Square Footage: #{ home.square_footage}
+                li Price: #{ home.price}
+                li Year built: #{ home.year_built}
+              .span Description: #{home.description}
