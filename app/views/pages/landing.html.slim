@@ -15,7 +15,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body.landing-body
-    img.landing-picture src="/images/evelyn-paris-95853.jpg" width="100%" height="650"/
+    = image_tag("evelyn-paris-95853.jpg", class:"landing-picture", width:"100%", height:"650") 
     
     .container
       .jumbotron.text-center.my-jumbotron.pull-center
@@ -30,7 +30,8 @@ html
           .col-md-4
             = link_to "Login", auth_path(provider: 'github'), class: "btn btn-success btn-lg active"
         
-    img.banner src="/images/alina-chupakhina-239200.jpg" width="100%" height="300"/
+    = image_tag("alina-chupakhina-239200.jpg", class:"banner", width:"100%", height:"300") 
+
     
     .container
       .jumbotron.text-center.col-md-8-offset-4.offers
