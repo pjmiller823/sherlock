@@ -20,3 +20,25 @@
   font-size: 150%;
   font: #444341;
 }
+
+.standard_home ul li {
+  font: black;
+}
+
+.new_home ul li{
+  font: blue;
+}
+
+.old_home  ul li{
+  font: red;
+}
+
+.picture-modal {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.not-a-button {
+  font-size: 150%;
+}

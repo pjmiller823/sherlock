@@ -13,38 +13,50 @@
           p = link_to "Edit this entry", edit_home_path
           p = link_to @home, method: :delete, data: { confirm: 'Are you sure?' } do
             | Delete this entry
-        
-      .media-body.show-details
-        -if (Time.now - @home.created_at) < 2.days
-          ul.text-primary
-            li Number of Bedrooms: #{ @home.number_of_bedrooms}
-            li Number of Baths: #{ @home.number_of_baths}
-            li Square Footage: #{ @home.square_footage}
-            li Price: #{ @home.price}
-            li Year built: #{ @home.year_built}
-            li Listed by: #{@home.created_by.name}
-            li Created #{time_ago_in_words(@home.created_at)} ago
-          .span.description-span Description: #{@home.description}
-          
-        -elsif (Time.now - @home.created_at) > 2.days < 30.days
-          ul.
-            li Number of Bedrooms: #{ @home.number_of_bedrooms}
-            li Number of Baths: #{ @home.number_of_baths}
-            li Square Footage: #{ @home.square_footage}
-            li Price: #{ @home.price}
-            li Year built: #{ @home.year_built}
-            li Listed by: #{@home.created_by.name}
-            li Created #{time_ago_in_words(@home.created_at)} ago
-          .span.description-span Description: #{@home.description}
-          
-        -else
-          ul.text-danger
-            li Number of Bedrooms: #{ @home.number_of_bedrooms}
-            li Number of Baths: #{ @home.number_of_baths}
-            li Square Footage: #{ @home.square_footage}
-            li Price: #{ @home.price}
-            li Year built: #{ @home.year_built}
-            li Listed by: #{@home.created_by.name}
-            li Created #{time_ago_in_words(@home.created_at)} ago
-          .span.description-span Description: #{@home.description}
-          
+        .not-a-button data-target="#smallpic" data-toggle="modal" type="button" 
+          | Small
+        .not-a-button data-target="#mediumpic" data-toggle="modal" type="button" 
+          | Medium
+        .not-a-button data-target="#largepic" data-toggle="modal" type="button" 
+          | Large        
+      .media-body.show-details class="#{home_age(@home.created_at)}"
+        ul
+          li Number of Bedrooms: #{ @home.number_of_bedrooms}
+          li Number of Baths: #{ @home.number_of_baths}
+          li Square Footage: #{ @home.square_footage}
+          li Price: #{ @home.price}
+          li Year built: #{ @home.year_built}
+          li Listed by: #{@home.created_by.name}
+          li Created #{time_ago_in_words(@home.created_at)} ago
+        .span.description-span Description: #{@home.description}
+
+        #smallpic.modal.fade.bs-example-modal-large aria-labelledby="myModalLabel" role="dialog" tabindex="-1" 
+          .modal-dialog.modal-lg role="document" 
+            .modal-content
+              button.close aria-label="Close" data-dismiss="modal" type="button" 
+                span aria-hidden="true"  X
+              .modal-body.picture-modal
+                -if @home.image_url(:medium)
+                  = image_tag(@home.image_url(:small))
+                -else
+                  = image_tag("No_picture_available.png", size: "400x500")
+        #mediumpic.modal.fade.bs-example-modal-large aria-labelledby="myModalLabel" role="dialog" tabindex="-1" 
+          .modal-dialog.modal-lg role="document" 
+            .modal-content
+              button.close aria-label="Close" data-dismiss="modal" type="button" 
+                span aria-hidden="true"  X
+              .modal-body.picture-modal
+                -if @home.image_url(:medium)
+                  = image_tag(@home.image_url(:medium))
+                -else
+                  = image_tag("No_picture_available.png", size: "400x500")
+        #largepic.modal.fade.bs-example-modal-large aria-labelledby="myModalLabel" role="dialog" tabindex="-1" 
+          .modal-dialog.modal-lg role="document" 
+            .modal-content
+              button.close aria-label="Close" data-dismiss="modal" type="button" 
+                span aria-hidden="true"  X
+              .modal-body.picture-modal
+                -if @home.image_url(:medium)
+                  = image_tag(@home.image_url(:large))
+                -else
+                  = image_tag("No_picture_available.png", size: "400x500")

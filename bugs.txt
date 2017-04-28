@@ -1,0 +1,2 @@
+- Pagination persists on dynamic search even with less than six homes.
+- lost ability to color words by date.
