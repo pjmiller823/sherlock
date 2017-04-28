@@ -1,0 +1,21 @@
+.col-md-6.index-column
+  .media.index-homes
+    .media-left
+      -if home.image_url(:small)
+        = image_tag(home.image_url(:small))
+      -else
+        = image_tag("No_picture_available.png", size: "200x250")
+
+    .media-body
+      h4.media-heading = link_to "View The Home", home
+      ul
+        li = home.address
+        li = home.city
+        li = home.state
+        li = home.zip
+        li Number of Bedrooms: #{ home.number_of_bedrooms}
+        li Number of Baths: #{ home.number_of_baths}
+        li Square Footage: #{ home.square_footage}
+        li Price: #{ home.price}
+        li Year built: #{ home.year_built}
+      .span Description: #{home.description}
