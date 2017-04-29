@@ -5,9 +5,8 @@
         = image_tag(home.image_url(:small))
       -else
         = image_tag("No_picture_available.png", size: "200x250")
-      .span
-        .glyphicon.glyphicon-heart.clickable-heart
-
+      =link_to raw("<i class='glyphicon glyphicon-heart'></i>"), '#', class: "clickable-heart", data: {home_id: home.id}
+    
     .media-body
       h4.media-heading = link_to "View The Home", home
       ul

@@ -1,9 +1,26 @@
 $(document).ready(function() {
+  // 'hearting' the houses.
   $('.clickable-heart').on('click', function(event) {
-   $(this).css({color: 'pink'})
+    event.preventDefault()
+
+    let home_id = $(this).data(`home-id`)
+
+// build favorites controller. Create and Delet action. in it's own controller. 
+    console.log($(this).data(`home-id`))
+
+
+    $.ajax({
+      url: '/homes',
+      data: { query: home_id},
+      dataType: 'script'
+    })
+
   })
 
 
+
+
+  // dynamic search
   $('#query').on('input', function(event) {
     let queryValue = $(this).val()
 
@@ -16,6 +33,7 @@ $(document).ready(function() {
     })
   })
 
+  // AJAX and pagination and you.
   $('.page').on('click', function(event) {
     let page = $(this).val()
 
