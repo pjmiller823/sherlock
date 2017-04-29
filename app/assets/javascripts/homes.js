@@ -16,7 +16,11 @@ $(document).ready(function() {
     })
   })
 
+  $('.page').on('click', function(event) {
+    let page = $(this).val()
 
+    console.log(page)
+  })
 
 
 

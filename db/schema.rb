@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416035405) do
+ActiveRecord::Schema.define(version: 20170429010919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.string   "home_id"
+    t.string   "created_by_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["created_by_id"], name: "index_favorites_on_created_by_id", using: :btree
+    t.index ["home_id"], name: "index_favorites_on_home_id", using: :btree
+  end
 
   create_table "files", force: :cascade do |t|
     t.binary "content"

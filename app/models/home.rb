@@ -16,4 +16,6 @@ class Home < ApplicationRecord
   def can_user_destroy?(user)
     created_by == user
   end
+
+  has_many :favorites 
 end

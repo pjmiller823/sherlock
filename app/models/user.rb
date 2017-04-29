@@ -17,4 +17,5 @@ class User < ApplicationRecord
   end
 
   has_many :homes
+  has_many :favorites
 end
