@@ -3,7 +3,7 @@
   h2 #{@home.address} in #{@home.city}, #{@home.state}, #{@home.zip}
    
 .col-md-12.index-column
-    .media
+    .media.show-media
       .media-left.show-pic
         -if @home.image_url(:medium)
           = image_tag(@home.image_url(:medium))
@@ -23,7 +23,8 @@
         ul
           li Number of Bedrooms: #{ @home.number_of_bedrooms}
           li Number of Baths: #{ @home.number_of_baths}
-          li Square Footage: #{ @home.square_footage}
+          li.square-footage data-sqfeet="#{@home.square_footage}"
+            |Square Footage: #{ @home.square_footage}
           li Price: #{ @home.price}
           li Year built: #{ @home.year_built}
           li Listed by: #{@home.created_by.name}
