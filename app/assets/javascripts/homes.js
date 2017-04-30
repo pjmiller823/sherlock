@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // 'hearting' the houses.
-  $('.clickable-heart').on('click', function(event) {
-    event.preventDefault().css({color: "pink"})
+  $('.media-left').on('click', '.clickable-heart', function(event) {
+    event.preventDefault()
 
     let home_id = $(this).data(`home-id`)
 
@@ -16,9 +16,6 @@ $(document).ready(function() {
     })
 
   })
-
-
-
 
   // dynamic search
   $('#query').on('input', function(event) {
@@ -40,7 +37,20 @@ $(document).ready(function() {
     console.log(page)
   })
 
+  // Square Feet to Square Meters
+  $('.media').on('click', '.square-footage', function(event) {
+   let sqFeet = $(this).data("sqfeet")
+   let sqMeters = (sqFeet * 0.093).toFixed(2)
+   console.log(`The value is ${sqMeters}`)
+   $(this).replaceWith( `<li class="square-meters" data-sqfeet="${sqMeters}">${sqMeters} meters squared</li>` )
+  })
 
+   // Square Meters to Square Feet
+  $('.media').on('click', '.sqMetersFeet', function(event) {
+   let sqFeet = $(this).data("sqfeet")
+   console.log(`The value is ${sqFeet}`)
+   $(this).replaceWith( `<li class="square-meters" data-sqfeet="${sqFeet}">Square Footage: ${sqFeet}</li>` )
+  })
 
 
 

@@ -16,7 +16,8 @@
         li = home.zip
         li Number of Bedrooms: #{ home.number_of_bedrooms}
         li Number of Baths: #{ home.number_of_baths}
-        li Square Footage: #{ home.square_footage}
+        li.square-footage data-sqfeet="#{home.square_footage}"
+          |Square Footage: #{ home.square_footage}
         li Price: $#{ home.price}
         li Year built: #{ home.year_built}
       .span Description: #{home.description}

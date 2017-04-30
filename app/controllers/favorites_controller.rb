@@ -6,10 +6,10 @@ class FavoritesController < ApplicationController
   def create
     home_id = params["home_id"]
     created_by = current_user
+  end
 
-    # talk to AJAX server.
-
-    # record the house_id, user_id, and log them.
-    # return a favorite class name that will change the heart pink the next time it is loaded, or standard class if not the favorite.
+  def delete
+    home_id = nil
+    created_by = nil
   end
 end
