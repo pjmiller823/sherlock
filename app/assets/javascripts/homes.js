@@ -1,16 +1,16 @@
 $(document).ready(function() {
   // 'hearting' the houses.
   $('.clickable-heart').on('click', function(event) {
-    event.preventDefault()
+    event.preventDefault().css({color: "pink"})
 
     let home_id = $(this).data(`home-id`)
 
-// build favorites controller. Create and Delet action. in it's own controller. 
+// build favorites controller. Create and Deletd action. in it's own controller.
     console.log($(this).data(`home-id`))
 
 
     $.ajax({
-      url: '/homes',
+      url: '/favorites',
       data: { query: home_id},
       dataType: 'script'
     })
