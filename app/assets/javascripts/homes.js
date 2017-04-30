@@ -5,13 +5,14 @@ $(document).ready(function() {
 
     let home_id = $(this).data(`home-id`)
 
-// build favorites controller. Create and Deletd action. in it's own controller.
+// build favorites controller. Create and Delete action. in it's own controller.
     console.log($(this).data(`home-id`))
 
 
     $.ajax({
-      url: '/favorites',
-      data: { query: home_id},
+      type: 'POST'
+      url: 'favorites/' + home-id,
+      data: { home_id: home_id},
       dataType: 'script'
     })
 
@@ -41,14 +42,12 @@ $(document).ready(function() {
   $('.media').on('click', '.square-footage', function(event) {
    let sqFeet = $(this).data("sqfeet")
    let sqMeters = (sqFeet * 0.093).toFixed(2)
-   console.log(`The value is ${sqMeters}`)
    $(this).replaceWith( `<li class="square-meters" data-sqfeet="${sqFeet}">Meters Squared: ${sqMeters}</li>` )
   })
 
    // Square Meters to Square Feet
   $('.media').on('click', '.square-meters', function(event) {
    let sqFeet = $(this).data("sqfeet")
-   console.log(`The value is ${sqFeet}`)
    $(this).replaceWith( `<li class="square-footage" data-sqfeet="${sqFeet}">Square Footage: ${sqFeet}</li>` )
   })
 

@@ -3,6 +3,7 @@ class FavoritesController < ApplicationController
 
   end
 
+# Post /favorites
   def create
     home_id = params["home_id"]
     created_by = current_user
