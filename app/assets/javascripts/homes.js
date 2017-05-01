@@ -1,21 +1,31 @@
 $(document).ready(function() {
+
   // 'hearting' the houses.
-  $('.media-left').on('click', '.clickable-heart', function(event) {
+  $('.media-left').on('click', '.favorited', function(event) {
     event.preventDefault()
-
     let home_id = $(this).data(`home-id`)
-
-// build favorites controller. Create and Delete action. in it's own controller.
     console.log($(this).data(`home-id`))
+    $(this)replaceWith(`<span class="clickable-heart favorited" data-remote=true data-type=script data-homeid="${home_id}"> &hearts;</span>`)
 
 
     $.ajax({
       type: 'POST'
-      url: 'favorites/' + home-id,
-      data: { home_id: home_id},
-      dataType: 'script'
+      url: 'favorites/' + home_id,
+      success: function(event){
+        $(this).css({color: 'pink'})
+      }
     })
+  })
 
+  // Unhearting
+  $('.media-left').on('click', '.un-favorited', function(event) {
+    let homeId = $(this).data("homeid")
+    $(this).replaceWith( `<span class="clickable-heart un-favorited" data-remote=true data-type=script data-homeid="${home_id}"> &hearts;</span>` )
+
+    $.ajax({
+      type: "DELETE",
+      url: 'favorites/destroy/' + home_id
+    })
   })
 
   // dynamic search

@@ -4,16 +4,17 @@ Rails.application.routes.draw do
   mount Shrine::DownloadEndpoint => "/attachments"
 
   get 'pages/landing'
-  get '/home'                       => 'homes#show'
-  get '/delete'                     => 'homes#delete'
+  get '/home'                         => 'homes#show'
+  get '/delete'                       => 'homes#delete'
   root 'pages#landing'
-  get  '/auth/:provider'            => 'omniauth#auth',    as: :auth
-  get  '/auth/:provider/callback'   => 'session#create'
-  get  '/auth/failure'              => 'session#failure'
+  get  '/auth/:provider'              => 'omniauth#auth',    as: :auth
+  get  '/auth/:provider/callback'     => 'session#create'
+  get  '/auth/failure'                => 'session#failure'
 
-  get  '/login'                     => 'session#new'
-  post '/login'                     => 'session#create'
-  get  '/logout'                    => 'session#destroy'
+  get  '/login'                       => 'session#new'
+  post '/login'                       => 'session#create'
+  get  '/logout'                      => 'session#destroy'
 
-  post 'favorites/:home_id'          =>  'favorites#create'
+  post 'favorites/:home_id'           =>  'favorites#create'
+  delete 'favorites/destroy/:home_id' =>  'favorites#destroy'
 end

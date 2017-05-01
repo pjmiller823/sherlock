@@ -17,5 +17,5 @@ class Home < ApplicationRecord
     created_by == user
   end
 
-  has_many :favorites 
+  has_many :favorites, dependent: :destroy
 end

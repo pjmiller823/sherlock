@@ -4,9 +4,13 @@
       -if home.image_url(:small)
         = image_tag(home.image_url(:small))
       -else
-        = image_tag("No_picture_available.png", size: "200x250")
-      =link_to raw("<i class='glyphicon glyphicon-heart'></i>"), homes_path, class: "clickable-heart", data: {home_id: home.id}
-    
+        = image_tag("No_picture_available.png", size: "200x250")      
+      
+      / -if logged_in? && favorited(home.id) == true
+      =link_to raw("<i class='glyphicon glyphicon-heart'></i>"), homes_path, class: "clickable-heart favorited", data: {home_id: home.id}
+      / -elsif logged_in? && favorited(home.id) == false
+      /   =link_to raw("<i class='glyphicon glyphicon-heart'></i>"), homes_path, class: "clickable-heart un-sfavorited", data: {home_id: home.id}
+
     .media-body
       h4.media-heading = link_to "View The Home", home
       ul

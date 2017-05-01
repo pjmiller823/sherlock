@@ -3,14 +3,12 @@ class FavoritesController < ApplicationController
 
   end
 
-# Post /favorites
   def create
-    home_id = params["home_id"]
-    created_by = current_user
+    current_user.favorites.create(:home_id => params[:home_id])
   end
 
   def delete
-    home_id = nil
-    created_by = nil
+    favorite = Favorite.find_by(:home_id => params[:homeId], :user_id => current_user.id)
+    favorite.destroy
   end
 end
