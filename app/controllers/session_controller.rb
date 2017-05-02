@@ -6,7 +6,7 @@ class SessionController < ApplicationController
   # handle the post from the login page
   def create
     self.current_user = User.from_omniauth(request.env['omniauth.auth'])
-
+    SherlockMailer.welcome(current_user).deliver_later
     if current_user
       redirect_to homes_path
     else

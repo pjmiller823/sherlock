@@ -5,10 +5,10 @@ class SherlockMailer < ApplicationMailer
   #
   #   en.sherlock_mailer.welcome.subject
   #
-  def welcome
-    @greeting = "Hi"
+  def welcome(user)
+    @user = user
 
-    mail to: "to@example.org"
+    mail(to: @user.email, subject: 'Welcome to Sherlock!')
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

@@ -3,7 +3,7 @@ class SherlockMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/sherlock_mailer/welcome
   def welcome
-    SherlockMailer.welcome
+    SherlockMailer.welcome(User.first)
   end
 
   # Preview this email at http://localhost:3000/rails/mailers/sherlock_mailer/favorites

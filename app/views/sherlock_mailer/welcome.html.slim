@@ -1,2 +1,7 @@
-h1 Sherlock#welcome
-p = @greeting + ", find me in app/views/sherlock_mailer/welcome.html.slim"
+doctype html
+html lang="en"
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+  body
+h1 Welcome to Sherlock #{@user.name}!
+p find me in https://pjm-sherlock.herokuapp.com/
