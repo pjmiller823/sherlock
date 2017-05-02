@@ -4,13 +4,13 @@ $(document).ready(function() {
     let homeId = $(this).data('homeid')
     let isFavorited = $(this).hasClass('glyphicon-heart')
 
-    $(this).toggleClass("glyphicon-heart-empty")
-    $(this).toggleClass("glyphicon-heart")
-
     $.ajax({
       method: 'POST',
       url: isFavorited ? `/homes/${homeId}/unfavorite` : `/homes/${homeId}/favorite`,
       dataType: 'script'
+    }).success(() => {
+      $(this).toggleClass("glyphicon-heart-empty")
+      $(this).toggleClass("glyphicon-heart")
     })
   })
 
