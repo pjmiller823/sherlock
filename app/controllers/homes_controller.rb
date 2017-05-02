@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
   before_action :authenticate!, except: [:index, :show]
+
   # GET /homes
   def index
     @query = params[:query]
@@ -60,6 +61,23 @@ class HomesController < ApplicationController
       redirect_to homes_path, notice: "You can't destroy something you didn't create"
     end
     redirect_to homes_url, notice: 'Home was successfully destroyed.'
+  end
+
+  def favorite
+    home = Home.find(params[:id])
+
+    Favorite.create(home: home, created_by: current_user)
+  end
+
+  def unfavorite
+    home = Home.find(params[:id])
+    favorite = Favorite.find_by(home: home, created_by: current_user)
+
+    if favorite
+      favorite.destroy
+    end
+
+    Rails.logger.debug "UN FAVORITING!"
   end
 
   private

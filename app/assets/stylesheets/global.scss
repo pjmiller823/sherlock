@@ -5,7 +5,7 @@ body {
   color: #444341;
 }
 .navbar {
-  background-color: #60824a;
+  background-color: $accent-color;
   border-bottom: solid .3em #444341;
 
   a {
@@ -19,7 +19,7 @@ ul {
 }
 
 footer {
-  background-color: #60824a;
+  background-color: $accent-color;
   border-top: solid .3em #444341;
   padding-bottom: 4px;
   margin-bottom: 0;

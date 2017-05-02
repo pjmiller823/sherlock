@@ -42,3 +42,9 @@
 .not-a-button {
   font-size: 150%;
 }
+
+.home-modal {
+  .modal-content {
+    background-color: $accent-color;
+  }
+}

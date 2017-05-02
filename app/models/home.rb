@@ -5,8 +5,9 @@ class Home < ApplicationRecord
   validates :zip, presence: true
   validates :price, presence: true
 
-
+  has_many :favorites, dependent: :destroy
   belongs_to :created_by, class_name: "User"
+
   include ImageUploader[:image]
 
   def can_user_edit?(user)
@@ -17,5 +18,7 @@ class Home < ApplicationRecord
     created_by == user
   end
 
-  has_many :favorites, dependent: :destroy
+  def square_meterage
+    square_footage.to_i * 0.093
+  end
 end

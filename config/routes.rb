@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :homes
+  resources :homes do
+    member do
+      post 'favorite'
+      post 'unfavorite'
+    end
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   mount Shrine::DownloadEndpoint => "/attachments"
 
@@ -14,7 +20,4 @@ Rails.application.routes.draw do
   get  '/login'                       => 'session#new'
   post '/login'                       => 'session#create'
   get  '/logout'                      => 'session#destroy'
-
-  post 'favorites/:home_id'           =>  'favorites#create'
-  delete 'favorites/destroy/:home_id' =>  'favorites#destroy'
 end

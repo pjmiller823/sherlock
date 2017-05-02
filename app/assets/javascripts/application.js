@@ -16,4 +16,3 @@
 
 //= require 'cable'
 //= require 'homes'
-//= require 'show'

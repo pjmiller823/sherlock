@@ -8,4 +8,8 @@ module HomesHelper
       "standard_home"
     end
   end
+
+  def home_favorited_heart_class(home, user)
+    Favorite.find_by(home: home, created_by: user) ? "glyphicon-heart" : "glyphicon-heart-empty"
+  end
 end

@@ -1,30 +1,16 @@
 $(document).ready(function() {
 
-  // 'hearting' the houses.
-  $('.media-left').on('click', '.favorited', function(event) {
-    event.preventDefault()
-    let home_id = $(this).data(`home-id`)
-    console.log($(this).data(`home-id`))
-    $(this)replaceWith(`<span class="clickable-heart favorited" data-remote=true data-type=script data-homeid="${home_id}"> &hearts;</span>`)
+  $('body').on('click', '.clickable-heart', function(event) {
+    let homeId = $(this).data('homeid')
+    let isFavorited = $(this).hasClass('glyphicon-heart')
 
-
-    $.ajax({
-      type: 'POST'
-      url: 'favorites/' + home_id,
-      success: function(event){
-        $(this).css({color: 'pink'})
-      }
-    })
-  })
-
-  // Unhearting
-  $('.media-left').on('click', '.un-favorited', function(event) {
-    let homeId = $(this).data("homeid")
-    $(this).replaceWith( `<span class="clickable-heart un-favorited" data-remote=true data-type=script data-homeid="${home_id}"> &hearts;</span>` )
+    $(this).toggleClass("glyphicon-heart-empty")
+    $(this).toggleClass("glyphicon-heart")
 
     $.ajax({
-      type: "DELETE",
-      url: 'favorites/destroy/' + home_id
+      method: 'POST',
+      url: isFavorited ? `/homes/${homeId}/unfavorite` : `/homes/${homeId}/favorite`,
+      dataType: 'script'
     })
   })
 
@@ -49,19 +35,13 @@ $(document).ready(function() {
   })
 
   // Square Feet to Square Meters
-  $('.media').on('click', '.square-footage', function(event) {
-   let sqFeet = $(this).data("sqfeet")
-   let sqMeters = (sqFeet * 0.093).toFixed(2)
-   $(this).replaceWith( `<li class="square-meters" data-sqfeet="${sqFeet}">Meters Squared: ${sqMeters}</li>` )
+  $('body').on('click', '.square-footage', function(event) {
+    let showingFeet = $(this).data('showingfeet')
+    let sqFeet      = $(this).data("sqfeet")
+    let sqMeters    = $(this).data('sqmeters')
+
+    $(this).text(showingFeet ? `Meters Squared: ${sqMeters}` : `Square Footage: ${sqFeet}`)
+
+    $(this).data('showingfeet', !showingFeet)
   })
-
-   // Square Meters to Square Feet
-  $('.media').on('click', '.square-meters', function(event) {
-   let sqFeet = $(this).data("sqfeet")
-   $(this).replaceWith( `<li class="square-footage" data-sqfeet="${sqFeet}">Square Footage: ${sqFeet}</li>` )
-  })
-
-
-
-
 })
