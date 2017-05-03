@@ -1,7 +1,15 @@
 class User < ApplicationRecord
   def self.from_omniauth(authentication_data)
-    user = User.where(provider: authentication_data['provider'],
-                      uid: authentication_data['uid']).first_or_create
+    users = User.where(provider: authentication_data['provider'],
+                       uid: authentication_data['uid'])
+    if users.exists?
+      Rails.logger.debug "I'm in exists"
+      user = users.first
+    else
+      Rails.logger.debug "I'm in doesn't"
+      user = users.create
+      SherlockMailer.welcome(user).deliver_later
+    end
 
     Rails.logger.debug "The user is #{user.inspect}"
     Rails.logger.debug "The authinfo is #{authentication_data.info}"

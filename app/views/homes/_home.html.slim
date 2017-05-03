@@ -4,9 +4,7 @@
       -if home.image_url(:small)
         = image_tag(home.image_url(:small))
       -else
-        = image_tag("No_picture_available.png", size: "200x250")      
-      
-      / -if logged_in? && favorited(home.id) == true
+        = image_tag("No_picture_available.png", size: "200x250")
       
       i.glyphicon.clickable-heart data={homeid: home.id} class=home_favorited_heart_class(home, current_user)
 
