@@ -1,10 +1,6 @@
 class SherlockMailer < ApplicationMailer
+  default from: "thisisfake@fake.com"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.sherlock_mailer.welcome.subject
-  #
   def welcome(user)
     @user = user
 
@@ -16,10 +12,10 @@ class SherlockMailer < ApplicationMailer
   #
   #   en.sherlock_mailer.favorites.subject
   #
-  def favorites
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def favorites(home, current_user)
+    @home = home
+    @current_user = current_user
+    mail(to: @home.created_by.email, subject: "Someone favorited the house you listed!")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -27,9 +23,10 @@ class SherlockMailer < ApplicationMailer
   #
   #   en.sherlock_mailer.weekly.subject
   #
-  def weekly
-    @greeting = "Hi"
+  def weekly(home)
+    @home = home
 
-    mail to: "to@example.org"
+    mail subject: "New homes added this week!",
+         bcc: User.all.pluck(:email)
   end
 end

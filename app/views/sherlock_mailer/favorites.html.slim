@@ -1,2 +1,7 @@
-h1 Sherlock#favorites
-p = @greeting + ", find me in app/views/sherlock_mailer/favorites.html.slim"
+h1 
+  = @home.created_by.name
+  |, 
+p #{@current_user.name} has favorited your home at #{@home.address}, #{@home.city}, #{@home.state}, at #{Time.now.asctime}.
+
+p Sincerley,
+p The Sherlock Team

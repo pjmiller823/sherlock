@@ -67,6 +67,7 @@ class HomesController < ApplicationController
     home = Home.find(params[:id])
 
     Favorite.create(home: home, created_by: current_user)
+    SherlockMailer.favorites(home, current_user).deliver_later
   end
 
   def unfavorite
