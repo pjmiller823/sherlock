@@ -13,7 +13,7 @@ class SherlockMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/sherlock_mailer/weekly
   def weekly
-    SherlockMailer.weekly(User.first)
+    SherlockMailer.weekly(Home.all)
   end
 
 end

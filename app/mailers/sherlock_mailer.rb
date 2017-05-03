@@ -27,6 +27,7 @@ class SherlockMailer < ApplicationMailer
     @home = home
 
     mail subject: "New homes added this week!",
+         to: "someone@blank.com",
          bcc: User.all.pluck(:email)
   end
 end

@@ -81,6 +81,10 @@ class HomesController < ApplicationController
     Rails.logger.debug "UN FAVORITING!"
   end
 
+  def week_old?
+    week_old = Home.find_by(created_at <= 1.week_old)
+  end
+
   private
 
   # Only allow a trusted parameter "white list" through.
