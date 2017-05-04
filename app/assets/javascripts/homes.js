@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  // favorites a house
   $('body').on('click', '.clickable-heart', function(event) {
     let homeId = $(this).data('homeid')
     let isFavorited = $(this).hasClass('glyphicon-heart')

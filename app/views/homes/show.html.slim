@@ -25,7 +25,7 @@
           li Number of Baths: #{ @home.number_of_baths}
           li.square-footage data={sqfeet: @home.square_footage, sqmeters: @home.square_meterage, showingfeet: 'true'}
             | Square Footage: #{ @home.square_footage}
-          li Price: #{ @home.price}
+          li Price: #{ number_to_currency(@home.price, precision: 0)}
           li Year built: #{ @home.year_built}
           li Listed by: #{@home.created_by.name}
           li Created #{time_ago_in_words(@home.created_at)} ago

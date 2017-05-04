@@ -3,34 +3,3 @@
   end
 
 =p params
-/ .row.index-search 
-/   .col-md-10
-/     form.form-horizontal action="searched" method="get" 
-/       .form-group
-/         input.form-control name="search" placeholder="Search" type="search" 
-/         button.btn.btn-success type="submit" Elementary Search
-  
-/ / = paginate @homes
-/ .row
-/   / - @searched.each do |home| 
-/     .col-md-6.index-column
-/       .media
-/         .media-left
-/           -if home.image_url(:small)
-/             = image_tag(home.image_url(:small))
-/           -else
-/             = image_tag("stock-photo.jpeg", size: "200x200")
-/ 
-/         .media-body
-/           h4.media-heading = link_to "View The Home", home
-/           ul
-/             li = home.address
-/             li = home.city
-/             li = home.state
-/             li = home.zip
-/             li Number of Bedrooms: #{ home.number_of_bedrooms}
-/             li Number of Baths: #{ home.number_of_baths}
-/             li Square Footage: #{ home.square_footage}
-/             li Price: #{ home.price}
-/             li Year built: #{ home.year_built}
-/           = home.description
