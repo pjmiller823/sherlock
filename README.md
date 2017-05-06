@@ -1,7 +1,7 @@
 # README
 This is my Sherlock app, a theoretical home selling web application modeled off of Zillow. It is deployed at 'https://pjm-sherlock.herokuapp.com/'.
 
-###PURPOSE:
+### PURPOSE:
 
 This project began as an assignment for The Iron Yard and was updated on and off over the course of three weeks. The initial goal was to use Rails
 
