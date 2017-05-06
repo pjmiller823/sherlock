@@ -23,7 +23,7 @@ This project began as an assignment for The Iron Yard and was updated on and off
 ### Demo
 Landing Page:
 
-<img src="https://raw.githubusercontent.com/pjmiller823/sherlock/master/docs/sherlock-homepage-view.png" width="200", height="300">
+<img src="https://raw.githubusercontent.com/pjmiller823/sherlock/master/docs/sherlock-homepage-view.png" width="200">
 
 Index Page:
 
