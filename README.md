@@ -21,5 +21,14 @@ This project began as an assignment for The Iron Yard and was updated on and off
 - Clicking on the square footage will allow you to see the size of the home in square meters.
 
 ### Demo
+Landing Page:
 
-![]()
+<img src="https://raw.githubusercontent.com/pjmiller823/sherlock/master/docs/sherlock-homepage-view.png" width="200", height="300">
+
+Index Page:
+
+<img src="https://raw.githubusercontent.com/pjmiller823/sherlock/master/docs/sherlock-index-view.png" width="250">
+
+Individual Home 'Show' Page:
+
+<img src="https://raw.githubusercontent.com/pjmiller823/sherlock/master/docs/sherlock-show-view.png" width="250">
